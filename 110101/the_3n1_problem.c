@@ -14,7 +14,7 @@ int cycle_length(int n) {
 int find(int i,int j) {
     int max=0;
     int k;
-    //我这里的代码假设i比j小，但是这里题目没有做出这种要求！
+    /*我这里的代码假设i比j小，但是这里题目没有做出这种要求！*/
     for(k=i; k<=j; k++) {
         int k_cycle_length=cycle_length(k);
         if(k_cycle_length>max) max=k_cycle_length;
