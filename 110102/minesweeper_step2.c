@@ -10,8 +10,8 @@ int main() {
     int count=1;
     while(1) {
         scanf("%d%d",&n,&m);
-	//test all input is right!
-        //printf("n=%d,m=%d\n",n,m);
+	/*test all input is right!
+        printf("n=%d,m=%d\n",n,m);*/
         if(n==0 && m==0) break;
         if(count!=1)printf("\n");
         getchar();//delete newline after n,m
