@@ -28,7 +28,7 @@ int main() {
 	    int tmp_i=i;
 	    int tmp_j=j;
         if(i>j) {
-            //swap i,j
+            /*swap i,j*/
             int tmp=tmp_i;
             tmp_i=tmp_j;
             tmp_j=tmp;
