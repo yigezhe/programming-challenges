@@ -14,7 +14,7 @@ int main() {
         printf("n=%d,m=%d\n",n,m);*/
         if(n==0 && m==0) break;
         if(count!=1)printf("\n");
-        getchar();//delete newline after n,m
+        getchar();/*delete newline after n,m*/
         printf("Field #%d:\n",count);
         for(i=0; i<n; i++) {
             for(j=0; j<m; j++) {
