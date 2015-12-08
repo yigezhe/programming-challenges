@@ -38,14 +38,15 @@ void deal_data() {
             /*如果fields[i][j]=="*"那么它周围的点都可以统计出一个雷，
              * 我就直接加加来处理！*/
             if(fields[i][j]=='*') {
-                if(i+1<n && fields[i+1][j]=='*') mines[i+1][j]++;
-                if(j+1<n && fields[i][j+1]=='*') mines[i][j]++;
-                if(i-1>=0 && fields[i-1][j]=='*') mines[i][j]++;
-                if(j-1>=0 && fields[i][j-1]=='*') mines[i][j]++;
-                if(j-1>=0 && i-1>=0 && fields[i-1][j-1]=='*') mines[i][j]++;
-                if(j+1<n && i+1<n && fields[i+1][j+1]=='*') mines[i][j]++;
-                if(j+1<n && i-1>=0 && fields[i-1][j+1]=='*') mines[i][j]++;
-                if(j-1>=0 && i+1<n && fields[i+1][j-1]=='*') mines[i][j]++;
+		    /*这里就是j必须在m范围内而不是在n的范围内！*/
+                if(i+1<n) mines[i+1][j]++;
+                if(j+1<m) mines[i][j+1]++;
+                if(i-1>=0) mines[i-1][j]++;
+                if(j-1>=0) mines[i][j-1]++;
+                if(j-1>=0 && i-1>=0) mines[i-1][j-1]++;
+                if(j+1<m && i+1<n) mines[i+1][j+1]++;
+                if(j+1<m && i-1>=0) mines[i-1][j+1]++;
+                if(j-1>=0 && i+1<n) mines[i+1][j-1]++;
             }
         }
     }
@@ -69,7 +70,7 @@ int main() {
             printf("n=%d,m=%d\n",n,m);*/
         if(n==0 && m==0) break;
         get_data();
-        //print_data();
+        /*print_data();*/
         if(count!=1)printf("\n");
         printf("Field #%d:\n",count);
         deal_data();
