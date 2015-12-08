@@ -35,18 +35,15 @@ void deal_data() {
     }
     for(i=0; i<n; i++) {
         for(j=0; j<m; j++) {
-            /*如果fields[i][j]=="*"那么它周围的点都可以统计出一个雷，
-             * 我就直接加加来处理！*/
-            if(fields[i][j]=='*') {
-                if(i+1<n && fields[i+1][j]=='*') mines[i+1][j]++;
-                if(j+1<n && fields[i][j+1]=='*') mines[i][j]++;
-                if(i-1>=0 && fields[i-1][j]=='*') mines[i][j]++;
-                if(j-1>=0 && fields[i][j-1]=='*') mines[i][j]++;
-                if(j-1>=0 && i-1>=0 && fields[i-1][j-1]=='*') mines[i][j]++;
-                if(j+1<n && i+1<n && fields[i+1][j+1]=='*') mines[i][j]++;
-                if(j+1<n && i-1>=0 && fields[i-1][j+1]=='*') mines[i][j]++;
-                if(j-1>=0 && i+1<n && fields[i+1][j-1]=='*') mines[i][j]++;
-            }
+            /*这是第二种统计方式！*/
+            if(i+1<n && fields[i+1][j]=='*') mines[i][j]++;
+            if(j+1<m && fields[i][j+1]=='*') mines[i][j]++;
+            if(i-1>=0 && fields[i-1][j]=='*') mines[i][j]++;
+            if(j-1>=0 && fields[i][j-1]=='*') mines[i][j]++;
+            if(j-1>=0 && i-1>=0 && fields[i-1][j-1]=='*') mines[i][j]++;
+            if(j+1<m && i+1<n && fields[i+1][j+1]=='*') mines[i][j]++;
+            if(j+1<m && i-1>=0 && fields[i-1][j+1]=='*') mines[i][j]++;
+            if(j-1>=0 && i+1<n && fields[i+1][j-1]=='*') mines[i][j]++;
         }
     }
     for(i=0; i<n; i++) {
@@ -69,7 +66,7 @@ int main() {
             printf("n=%d,m=%d\n",n,m);*/
         if(n==0 && m==0) break;
         get_data();
-        //print_data();
+        /*print_data();*/
         if(count!=1)printf("\n");
         printf("Field #%d:\n",count);
         deal_data();
