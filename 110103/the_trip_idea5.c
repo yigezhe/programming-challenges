@@ -4,16 +4,20 @@
 int n;
 double student[N];
 
-double cent(double money) {
+double base(double money) {
     return (int)(money*100)*0.01;
 }
+double one_cent(double money) {
+    if(money>base(money))return 0.01;
+    else if(money>base(money)) return -0.01;
+    else return 0.0;
+}
+
 void get_data() {
     int i;
     for(i=0; i<n; i++) {
         scanf("%lf",&student[i]);
-    fprintf(stderr,"  %lf",student[i]);
     }
-    fprintf(stderr,"\n");
 }
 void deal_data() {
     double sum=0.0;
@@ -22,14 +26,22 @@ void deal_data() {
         sum+=student[i];
     }
     double average=sum/n;
-    fprintf(stderr,"average = %lf\n",average);
-    double transaction=0.0;
+    double more=0.0;
+    double less=0.0;
     for(i=0; i<n; i++) {
-        if(student[i]>average) transaction+=cent(student[i]-average);
-	    fprintf(stderr,"  %lf",average-student[i]);
+        if(student[i]<average) {
+		less+=base(average-student[i])+one_cent(average-student[i]);
+	}
+	else if(student[i]>average) {
+		more+=base(student[i]-average)+one_cent(student[i]-average);
+	}
     }
-    fprintf(stderr,"\n");
-    printf("%.2lf\n",transaction);
+    if(more<less) {
+	    printf("%.2lf\n",more);
+    } else {
+	    printf("%.2lf\n",less);
+    }
+
 }
 int main() {
 

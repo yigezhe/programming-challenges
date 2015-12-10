@@ -1,4 +1,4 @@
-for i in 1 2
+for i in 1 2 3 4
 do
 	./a.out < in$i >tmp$i
 	diff -c out$i tmp$i
