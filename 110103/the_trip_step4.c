@@ -4,15 +4,16 @@
 int n;
 double student[N];
 
-double base(double money) {
+double cent(double money) {
     return (int)(money*100)*0.01;
 }
-
 void get_data() {
     int i;
     for(i=0; i<n; i++) {
         scanf("%lf",&student[i]);
+    /*fprintf(stderr,"  %lf",student[i]);*/
     }
+    /*fprintf(stderr,"\n");*/
 }
 void deal_data() {
     double sum=0.0;
@@ -20,19 +21,29 @@ void deal_data() {
     for(i=0; i<n; i++) {
         sum+=student[i];
     }
-    printf("sum = %lf\n",sum);
     double average=sum/n;
-    printf("average = %lf\n",average);
-    average = 1008.89;
+    /*fprintf(stderr,"average = %lf\n",average);*/
     double transaction=0.0;
+    double transaction2=0.0;
+    int count=0;
+    int count2=0;
     for(i=0; i<n; i++) {
-        if(student[i]<average) {
-            transaction+=base(average-student[i]);
-	    printf("add %lf\n",base(average-student[i]));
-        }
+        if(student[i]>average) {
+		transaction+=cent(student[i]-average);
+		count2++;
+	}
+	else if(student[i]<average) {
+		transaction2+=cent(average-student[i]);
+		count++;
+	}
+	    /*fprintf(stderr,"  %lf",average-student[i]);*/
     }
-    printf("%.2lf\n",transaction);
-
+    /*fprintf(stderr,"\n");*/
+    if(count<count2) {
+		    printf("%.2lf\n",transaction2);
+    } else {
+		    printf("%.2lf\n",transaction);
+	    }
 }
 int main() {
 
