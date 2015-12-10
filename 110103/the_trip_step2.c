@@ -4,8 +4,8 @@
 int n;
 double student[N];
 
-double with_one_cent(double money) {
-	return (int)(money*100)*0.01;
+double cent(double money) {
+    return (int)(money*100)*0.01;
 }
 void get_data() {
     int i;
@@ -20,10 +20,9 @@ void deal_data() {
         sum+=student[i];
     }
     double average=sum/n;
-	average=with_one_cent(average);
     double transaction=0.0;
     for(i=0; i<n; i++) {
-        if(student[i]<average) transaction+=(average-student[i]);
+        if(student[i]<average) transaction+=cent(average-student[i]);
     }
     printf("%.2lf\n",transaction);
 }

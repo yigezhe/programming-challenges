@@ -18,10 +18,14 @@ void deal_data() {
     }
     double average=sum/n;
     double transaction=0.0;
+    double transaction2=0.0;
     for(i=0; i<n; i++) {
         if(student[i]>average) transaction+=(student[i]-average);
+	else if(student[i]<average)transaction2+=(average-student[i]);
+
     }
     printf("%.2lf\n",transaction);
+    fprintf(stderr,"way 1 = %lf,way 2 = %lf\n",transaction,transaction2);
 }
 int main() {
 
