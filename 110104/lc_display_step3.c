@@ -1,31 +1,25 @@
 #include<stdio.h>
+#include<string.h>
 /*显示的大小最大为10*/
 #define S 10
 /*n的位数最大是8位*/
 #define D 8
 int main() {
-    int s,n;
+    /*问题测试中还要处理007，所以n必须以字符串的形式读入！*/
+    int s;
+    char n[D+1];
     int i,j,k;
     char show[2*S+3][D*(S+2)+D-1];
     while(1) {
         /*s是数字显示的大小
          * n是要显示的数字！*/
-        scanf("%d%d",&s,&n);
+        scanf("%d%s",&s,n);
+	/*printf("s=%d,n=%s\n",s,n);*/
         /*printf("s=%d,n=%d\n",s,n);*/
-        if(s==0 && n==0) {
+        int nd=strlen(n);
+        if(s==0 && n[0]=='0' && nd==1) {
             break;
         }
-        /*我这里的代码没有处理n是零的情况！*/
-        int count=0;
-        int nn=n;
-        while(nn>0) {
-            count++;
-            nn=nn/10;
-        }
-        /*count计算的是n的位数！*/
-        int nd=count;
-	if(n==0) nd=1;
-        /*printf("nd =%d \n",nd);*/
         int row=2*s+3;
         int col=(s+2)*nd+nd-1;
 
@@ -142,21 +136,11 @@ int main() {
             }
         */
         /*每一个数字打印都对了，接下来是如何合并！*/
-        if(n==0) {
+        for(k=0; k<nd; k++) {
             for(i=0; i<r; i++) {
                 for(j=0; j<c; j++) {
-                    show[i][j]=digit[0][i][j];
+                    show[i][j+k*(s+2+1)]=digit[n[k]-'0'][i][j];
                 }
-            }
-        } else {
-            while(n>0) {
-                for(i=0; i<r; i++) {
-                    for(j=0; j<c; j++) {
-                        show[i][j+(nd-1)*(s+2+1)]=digit[n%10][i][j];
-                    }
-                }
-                n=n/10;
-                nd--;
             }
         }
         for(i=0; i<row; i++) {
