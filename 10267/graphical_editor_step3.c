@@ -5,7 +5,7 @@
 #define N 250
 int main() {
     int pass=1;
-    //int count=0;
+    /*int count=0;*/
     char g[N][M+1];
     int n,m;
     char command;
@@ -36,7 +36,7 @@ int main() {
             }
         }
         if(!pass) break;
-        //printf("line %d: %s\n",count+1,line);
+        /*printf("line %d: %s\n",count+1,line);*/
         if(line[0]=='I') {
             /*创建一个N行M列的table！
              * 所有像素点都是白色！*/
@@ -122,7 +122,7 @@ int main() {
             g[queue[end].y][queue[end].x]=color;
             end++;
             while(start<end) {
-		    //printf("%d < %d\n",start,end);
+		    /*printf("%d < %d\n",start,end);*/
                 struct point cur;
                 cur.x=queue[start].x;
                 cur.y=queue[start].y;
