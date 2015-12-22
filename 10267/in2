@@ -1,0 +1,7 @@
+I 5 6
+L 2 3 A
+C
+V 3 2 5 A
+H 2 4 4 B
+K 2 3 5 5 C
+S book.txt
