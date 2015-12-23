@@ -165,7 +165,8 @@ int main() {
             }
             /*printf("---------\n");*/
         } else if(line[0]=='X') {
-            exit(0);/*?*/
+            //exit(0);/*?*/
+	    m=0;n=0;
         }
         /*
             count++;
